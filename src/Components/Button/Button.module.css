@@ -28,4 +28,31 @@
     cursor: pointer;
     margin-top: 15px;
     width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.noItemButton:hover .arrow {
+    animation: 0,1s arrowAnimate ease-in-out infinite;
+}
+
+@keyframes arrowAnimate {
+    0% {
+        transform: translate(0, -50%)
+    }
+    50% {
+        transform: translate(-7px, -50%);
+    }
+    100% {
+        transform: translate(0, -50%)
+    }
 }

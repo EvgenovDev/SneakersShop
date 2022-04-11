@@ -12,6 +12,7 @@ type Props = {
     sneakersData: Array<SneakersInterface>
     isFetching: boolean
     finalPrice: number
+    cartDataLength: number
 }
 
 const AllSneakersScreen: React.FC<Props> = ({
@@ -19,11 +20,12 @@ const AllSneakersScreen: React.FC<Props> = ({
                                                 checkItemInArray,
                                                 sneakersData,
                                                 isFetching,
-                                                finalPrice
+                                                finalPrice,
+                                                cartDataLength
                                             }) => {
     return (
         <div className={style.wrap}>
-            <MainHeader finalPrice={finalPrice}/>
+            <MainHeader finalPrice={finalPrice} cartDataLength={cartDataLength}/>
             <AllSneakersContent toggleCheckboxSneakers={toggleCheckboxSneakers}
                                 checkItemInArray={checkItemInArray}
                                 sneakersData={sneakersData}

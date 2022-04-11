@@ -3,7 +3,7 @@ import * as React from 'react';
 import style from "./ShopCard.module.css"
 import SneakersShopCard from "./SneakersShopCard/SneakersShopCard";
 import MainHeader from "../Header/MainHeader";
-import CardButton from "./CardButton/CardButton";
+import Button from "../Button/Button";
 import {addSpaceToNumberPrice} from "../../functions/addSpaceToNumberPrice";
 import {SneakersInterfaceCart} from "../../Types/sneakersTypes";
 import {Item} from "../../functions/checkItemInArray";
@@ -24,7 +24,8 @@ const ShopCard: React.FC<Props> = ({
                                    }) => {
     return (
         <div className={style.wrap}>
-            <MainHeader finalPrice={finalPrice}/>
+            <MainHeader finalPrice={finalPrice}
+                        cartDataLength={cartData.length}/>
             {cartData.length ?
                 <div className={style.shopCardFlex}>
                     <div className={style.shopCardWrap}>
@@ -50,7 +51,7 @@ const ShopCard: React.FC<Props> = ({
                             <span>Скидка</span>
                             <span>- 1028 ₽</span>
                         </div>
-                        <CardButton textContent="Перейти на главную"/>
+                        <Button textContent="Перейти на главную"/>
                     </div>
                 </div>
                 :
@@ -58,7 +59,7 @@ const ShopCard: React.FC<Props> = ({
                     <h2 className={style.noItemTitle}>В корзине ничего нет</h2>
                     <p className={style.noItemText}>Перейдите на главную страницу и добавьте товар в корзину для
                         оформления заказа</p>
-                    <CardButton textContent="Перейти на главную"/>
+                    <Button textContent="Перейти на главную"/>
                 </div>
             }
         </div>

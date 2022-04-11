@@ -8,13 +8,14 @@ import {SneakersInterface} from "../Types/sneakersTypes";
 import useData from "../Hooks/useData";
 import useTotalPrice from "../Hooks/useTotalPrice";
 import {arrayNameType} from "../Types/arrayNameTypes";
+import Favorites from "./Favorites/Favorites";
 
 function App() {
 
     const data = useData()
     const totalPrice = useTotalPrice(data.cartDataRef.current)
 
-    const toggleCheckboxItem = useCallback( async (arrayName: arrayNameType, newItem: Item) => {
+    const toggleCheckboxItem = useCallback(async (arrayName: arrayNameType, newItem: Item) => {
         switch (arrayName) {
             case "cartData":
                 if (data.cartDataRef.current.length !== 0 && isThisArrayHasItem(data.cartDataRef.current, newItem)) {
@@ -24,7 +25,9 @@ function App() {
                 }
                 break
             case "favoriteData":
-                if (data.favoriteDataRef.current.length !== 0 && isThisArrayHasItem(data.favoriteDataRef.current, newItem)) {
+                if (data.favoriteDataRef.current.length !== 0
+                    &&
+                    isThisArrayHasItem(data.favoriteDataRef.current, newItem)) {
                     await data.deleteItem(arrayName, newItem)
                 } else {
                     await data.addItem(arrayName, newItem)
@@ -42,23 +45,27 @@ function App() {
 
     }, [])
 
-  return (
-      <>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<AllSneakersScreen toggleCheckboxSneakers={toggleCheckboxItem}
-                                                                    checkItemInArray={checkItemInArray}
-                                                                    sneakersData={data.sneakersData}
-                                                                    isFetching={data.isFetching}
-                                                                    finalPrice={totalPrice.totalPrice}/>} />
-                        <Route path="/card" element={<ShopCard cartData={data.cartDataRef.current}
-                                                               finalPrice={totalPrice.totalPrice}
-                                                               setCartData={data.setCartData}
-                                                               deleteItem={data.deleteItem}/>} />
-                    </Routes>
-                </BrowserRouter>
-      </>
-  )
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<AllSneakersScreen toggleCheckboxSneakers={toggleCheckboxItem}
+                                                                checkItemInArray={checkItemInArray}
+                                                                sneakersData={data.sneakersData}
+                                                                isFetching={data.isFetching}
+                                                                finalPrice={totalPrice.totalPrice}
+                                                                cartDataLength={data.cartDataRef.current.length}/>}/>
+                    <Route path="/card" element={<ShopCard cartData={data.cartDataRef.current}
+                                                           finalPrice={totalPrice.totalPrice}
+                                                           setCartData={data.setCartData}
+                                                           deleteItem={data.deleteItem}/>}/>
+                    <Route path="/favorites" element={<Favorites finalPrice={totalPrice.totalPrice}
+                                                                 cartDataLength={data.cartDataRef.current.length}
+                                                                 favoriteData={data.favoriteDataRef.current}/>}/>
+                </Routes>
+            </BrowserRouter>
+        </>
+    )
 }
 
 export default App;

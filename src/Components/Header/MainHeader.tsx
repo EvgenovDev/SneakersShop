@@ -6,9 +6,10 @@ import {addSpaceToNumberPrice} from "../../functions/addSpaceToNumberPrice";
 
 type Props = {
     finalPrice: number
+    cartDataLength: number
 };
 
-const MainHeader: React.FC<Props> = ({finalPrice}) => {
+const MainHeader: React.FC<Props> = ({finalPrice, cartDataLength}) => {
     return (
         <header className={style.header}>
             <Link to="/" >
@@ -24,11 +25,16 @@ const MainHeader: React.FC<Props> = ({finalPrice}) => {
                 <li className={style.navElem}>
                     <Link to="/card">
                         <img src="./images/card.svg" alt="card"/>
-                        <span>{addSpaceToNumberPrice(finalPrice)} руб</span>
+                        <span className={style.totalCount}>{addSpaceToNumberPrice(finalPrice)} руб</span>
+                        <span className={cartDataLength === 0 ? style.productCountEmpty : style.productCount}>
+                            {cartDataLength}
+                        </span>
                     </Link>
                 </li>
                 <li className={style.navElem}>
-                    <img src="./images/like.svg" alt="like"/>
+                    <Link to="/favorites">
+                        <img src="./images/like.svg" alt="like"/>
+                    </Link>
                 </li>
                 <li className={style.navElem}>
                     <img src="./images/user.svg" alt="user"/>

@@ -1,0 +1,42 @@
+.wrap {
+    width: 100vw;
+    background: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    position: relative;
+}
+
+.noFavoritesWrap {
+    padding: 60px 40px 40px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.noFavoritesTitle {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 36px;
+}
+
+.noFavoritesText {
+    color: #9D9D9D;
+}
+
+.content {
+    padding: 40px;
+}
+
+.favoriteCardTitle {
+    text-align: center;
+    color: #9D9D9D;
+    font-size: 36px;
+}
+
+.favoriteCards {
+    display: flex;
+    flex-wrap: wrap;
+}
