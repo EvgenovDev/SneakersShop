@@ -2,7 +2,7 @@
 import * as React from 'react';
 import style from "./ShopCard.module.css"
 import SneakersShopCard from "./SneakersShopCard/SneakersShopCard";
-import MainHeader from "../MainHeader/MainHeader";
+import MainHeader from "../Header/MainHeader";
 import CardButton from "./CardButton/CardButton";
 import {addSpaceToNumberPrice} from "../../functions/addSpaceToNumberPrice";
 import {SneakersInterfaceCart} from "../../Types/sneakersTypes";
@@ -29,8 +29,8 @@ const ShopCard: React.FC<Props> = ({
                 <div className={style.shopCardFlex}>
                     <div className={style.shopCardWrap}>
                         <div className={style.content}>
-                            {cartData.map((item, index) =>
-                                <SneakersShopCard key={index}
+                            {cartData.map((item) =>
+                                <SneakersShopCard key={item.id}
                                                   sneakers={item}
                                                   setCartData={setCartData}
                                                   cartData={cartData}

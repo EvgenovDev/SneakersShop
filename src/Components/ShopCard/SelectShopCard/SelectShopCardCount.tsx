@@ -7,7 +7,7 @@ type Props = {
     valueCount: string
 }
 
-const SelectShopCardCount: React.FC<Props> = ({setCountSneakers,valueCount}) => {
+const SelectShopCardCount: React.FC<Props> = ({setCountSneakers, valueCount}) => {
     return (
         <div className={style.select}>
             <p>Количество:</p>

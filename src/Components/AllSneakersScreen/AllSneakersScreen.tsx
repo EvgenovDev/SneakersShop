@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./AllSneakersScreen.module.css";
-import MainHeader from "../MainHeader/MainHeader";
+import MainHeader from "../Header/MainHeader";
 import AllSneakersContent from "./AllSneakersContent/AllSneakersContent";
 import {SneakersInterface} from "../../Types/sneakersTypes";
 import {Item} from "../../functions/checkItemInArray";
