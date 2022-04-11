@@ -1,0 +1,31 @@
+.totalButton {
+    background-color: #87CEEB;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    padding: 20px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.totalButton:hover {
+    background-color: lightblue;
+}
+
+.noItemButton {
+    background-color: #87CEEB;
+    border-radius: 10px;
+    border: none;
+    padding: 20px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 300px;
+}

@@ -1,0 +1,70 @@
+.wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 29px 34px 33px;
+    border: 1px solid #F8F8F8;
+    box-sizing: border-box;
+    border-radius: 40px;
+    width: 210px;
+    height: 280px;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s box-shadow ease-in, transform 0.3s ease-in-out;
+}
+
+.wrap:hover {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05),
+                0 14px 100px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+}
+
+.sneakersName {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.costWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.addItem {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.subText {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: #BDBDBD;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.likeItem {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}

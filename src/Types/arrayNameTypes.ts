@@ -1,0 +1,1 @@
+export type arrayNameType = "cartData" | "favoriteData"

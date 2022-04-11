@@ -1,0 +1,87 @@
+.wrap {
+    display: flex;
+    border: 2px solid #F8F8F8;
+    box-sizing: border-box;
+    border-radius: 40px;
+    transition: 0.3s box-shadow ease-in, transform 0.3s ease-in-out;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 15px 20px 15px;
+    width: 750px;
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    position: relative;
+}
+
+.sneakersImage {
+    height: 150px;
+}
+
+.flexWrap {
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.params {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    margin-left: 30px;
+    gap: 10px;
+}
+
+.sneakersName {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.selectsWrap {
+    display: flex;
+    gap: 20px;
+    color: #757575
+}
+
+.sex {
+    color: #757575;
+}
+
+.totalWrap {
+    display: flex;
+    color: #757575;
+}
+
+.actionWrap {
+    display: flex;
+    gap: 30px;
+    color: #757575;
+    position: absolute;
+    bottom: 0;
+}
+
+.action {
+    border-bottom: 1px dashed #757575;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.action1 {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.action1 {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition-delay: 0.1s;
+}
+
+.wrap:hover .action1 {
+    transform: translateY(-15px);
+    opacity: 1;
+}
+
+.wrap:hover .action2 {
+    transform: translateY(-15px);
+    opacity: 1;
+}

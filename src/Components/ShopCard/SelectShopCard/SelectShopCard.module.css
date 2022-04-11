@@ -1,0 +1,27 @@
+select {
+    color: #757575;
+    border: none;
+    text-align: center;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    min-width: 30px;
+    font-size: 12px;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+select:focus {
+    color: #757575;
+    border: none;
+    outline: none;
+}
+
+.select {
+    text-align: center;
+    color: #757575;
+    display: flex;
+    align-items: flex-end;
+}
