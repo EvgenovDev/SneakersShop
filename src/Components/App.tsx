@@ -9,6 +9,7 @@ import useData from "../Hooks/useData";
 import useTotalPrice from "../Hooks/useTotalPrice";
 import {arrayNameType} from "../Types/arrayNameTypes";
 import Favorites from "./Favorites/Favorites";
+import {FavoritesContext} from "../Context/FavoritesContext";
 
 function App() {
 
@@ -47,23 +48,29 @@ function App() {
 
     return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<AllSneakersScreen toggleCheckboxSneakers={toggleCheckboxItem}
-                                                                checkItemInArray={checkItemInArray}
-                                                                sneakersData={data.sneakersData}
-                                                                isFetching={data.isFetching}
-                                                                finalPrice={totalPrice.totalPrice}
-                                                                cartDataLength={data.cartDataRef.current.length}/>}/>
-                    <Route path="/card" element={<ShopCard cartData={data.cartDataRef.current}
-                                                           finalPrice={totalPrice.totalPrice}
-                                                           setCartData={data.setCartData}
-                                                           deleteItem={data.deleteItem}/>}/>
-                    <Route path="/favorites" element={<Favorites finalPrice={totalPrice.totalPrice}
-                                                                 cartDataLength={data.cartDataRef.current.length}
-                                                                 favoriteData={data.favoriteDataRef.current}/>}/>
-                </Routes>
-            </BrowserRouter>
+            <FavoritesContext.Provider value={data.favoriteDataRef.current}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<AllSneakersScreen toggleCheckboxSneakers={toggleCheckboxItem}
+                                                                    checkItemInArray={checkItemInArray}
+                                                                    sneakersData={data.sneakersData}
+                                                                    isFetching={data.isFetching}
+                                                                    finalPrice={totalPrice.totalPrice}
+                                                                    cartDataLength={data.cartDataRef.current.length}/>}/>
+                        <Route path="/card" element={<ShopCard cartData={data.cartDataRef.current}
+                                                               finalPrice={totalPrice.totalPrice}
+                                                               setCartData={data.setCartData}
+                                                               deleteItem={data.deleteItem}
+                                                               toggleCheckboxItem={toggleCheckboxItem}
+                                                               checkItemInArray={checkItemInArray}/>}/>
+                        <Route path="/favorites" element={<Favorites finalPrice={totalPrice.totalPrice}
+                                                                     cartDataLength={data.cartDataRef.current.length}
+                                                                     favoriteData={data.favoriteDataRef.current}
+                                                                     toggleCheckboxSneakers={toggleCheckboxItem}
+                                                                     checkItemInArray={checkItemInArray}/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </FavoritesContext.Provider>
         </>
     )
 }

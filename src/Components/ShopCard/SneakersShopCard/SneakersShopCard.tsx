@@ -4,8 +4,8 @@ import style from "./SneakersShopCard.module.css"
 import useIndividualSneakersPrice from "../../../Hooks/useIndividualSneakersPrice";
 import SelectShopCardSize from "../SelectShopCard/SelectShopCardSize";
 import SelectShopCardCount from "../SelectShopCard/SelectShopCardCount";
-import {SneakersInterfaceCart} from "../../../Types/sneakersTypes";
-import {useEffect} from "react";
+import {SneakersInterface, SneakersInterfaceCart} from "../../../Types/sneakersTypes";
+import {useEffect, useState} from "react";
 import classNames from "classnames";
 import {Item} from "../../../functions/checkItemInArray";
 import {arrayNameType} from "../../../Types/arrayNameTypes";
@@ -15,14 +15,20 @@ type Props = {
     setCartData: (cartData: SneakersInterfaceCart[]) => void
     cartData: Array<SneakersInterfaceCart>
     deleteItem: (arrayName: arrayNameType, deleteItem: Item) => void
+    toggleCheckboxItem: (arrayName: arrayNameType, item: Item) => void
+    checkItemInArray: (arrayName: arrayNameType, sneakers: SneakersInterface) => boolean
 }
 
 const SneakersShopCard: React.FC<Props> = ({
                                                sneakers,
                                                setCartData,
                                                cartData,
-                                               deleteItem
+                                               deleteItem,
+                                               toggleCheckboxItem,
+                                               checkItemInArray
                                            }) => {
+
+    const [isAddedFavorite, setIsAddedFavorite] = useState<boolean>(checkItemInArray("favoriteData", sneakers))
 
     const individualSneakersPrice = useIndividualSneakersPrice(sneakers)
 
@@ -39,6 +45,11 @@ const SneakersShopCard: React.FC<Props> = ({
 
     const onClickDelete = (arrayName: arrayNameType) => {
         deleteItem(arrayName, sneakers)
+    }
+
+    const onClickFavoritesToggle = (arrayName: arrayNameType) => {
+        toggleCheckboxItem(arrayName, sneakers)
+        setIsAddedFavorite(value => !value)
     }
 
     useEffect(() => {
@@ -64,7 +75,13 @@ const SneakersShopCard: React.FC<Props> = ({
                         </span>
                     </div>
                     <div className={style.actionWrap}>
-                        <span className={classNames(style.action, style.action1)}>В избранное</span>
+                        <span className={classNames(style.action, style.action1)}
+                              onClick={() => {
+                                  onClickFavoritesToggle("favoriteData")
+                              }}>
+                            {isAddedFavorite ?
+                                "В избранном" : "Добавить в избранное"}
+                        </span>
                         <span className={classNames(style.action, style.action2)}
                               onClick={() => {
                                   onClickDelete("cartData")

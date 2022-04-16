@@ -1,25 +1,20 @@
 import React from "react";
+import {withGoTo} from "../../HOC/withGoTo";
 import style from "./Button.module.css"
-import {Link} from "react-router-dom";
+import {withAddToCart} from "../../HOC/withAddToCart";
 
-type Props = {
+export type IButton = {
     textContent: string
+    mainClassName: string
+    handleClick: () => void
 }
 
-const Button: React.FC<Props> = ({textContent}) => {
+export const Button: React.FC<IButton> = ({textContent, mainClassName, handleClick}) => {
     return (
-        <Link to="/">
-            <button className={textContent === "Заказать" ? style.totalButton : style.noItemButton}>
-                {textContent === "Перейти на главную" ?
-                    <img className={style.arrow}
-                         src="./images/arrow-back.svg" alt="arrowBack"/>
-                    :
-                    <></>
-                }
-                {textContent}
-            </button>
-        </Link>
+        <button className={mainClassName} onClick={handleClick}>{textContent}</button>
     )
 }
 
-export default Button;
+export const WithGoToButton = withGoTo(Button, style.noItemButton)
+
+export const WithAddToCartButton = withAddToCart(Button)

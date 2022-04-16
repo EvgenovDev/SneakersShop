@@ -48,7 +48,7 @@ const useData = () => {
                 break
             case "favoriteData":
                 await deleteSneakersInFavorite(deleteItem, favoriteDataRef.current)
-                favoriteData.setFavorite(favoriteData.favorite.filter(item => item.id !== deleteItem.id))
+                favoriteData.setFavorite(favoriteDataRef.current.filter(item => item.id !== deleteItem.id))
         }
     }, [])
 

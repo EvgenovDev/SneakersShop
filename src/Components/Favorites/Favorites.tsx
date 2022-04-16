@@ -3,16 +3,26 @@ import * as React from 'react';
 import MainHeader from "../Header/MainHeader";
 import style from "./Favorites.module.css"
 import {SneakersInterface} from "../../Types/sneakersTypes";
-import Button from "../Button/Button";
 import FavoriteCard from "./FavoriteCard/FavoriteCard";
+import {WithGoToButton} from "../Button/Button";
+import {arrayNameType} from "../../Types/arrayNameTypes";
+import {Item} from "../../functions/checkItemInArray";
 
 type Props = {
     finalPrice: number
     cartDataLength: number
     favoriteData: SneakersInterface []
+    toggleCheckboxSneakers: (arrayName: arrayNameType, item: Item) => void
+    checkItemInArray: (arrayName: arrayNameType, sneakers: SneakersInterface) => boolean
 }
 
-const Favorites: React.FC<Props> = ({finalPrice, cartDataLength, favoriteData}) => {
+const Favorites: React.FC<Props> = ({
+                                        finalPrice,
+                                        cartDataLength,
+                                        favoriteData,
+                                        checkItemInArray,
+                                        toggleCheckboxSneakers
+                                    }) => {
     return (
         <div className={style.wrap}>
             <MainHeader finalPrice={finalPrice} cartDataLength={cartDataLength}/>
@@ -23,7 +33,9 @@ const Favorites: React.FC<Props> = ({finalPrice, cartDataLength, favoriteData}) 
                     </h2>
                     <div className={style.favoriteCards}>
                         {favoriteData.map(item => <FavoriteCard key={item.id}
-                                                                sneakers={item}/>)}
+                                                                sneakers={item}
+                                                                checkItemInArray={checkItemInArray}
+                                                                toggleCheckboxSneakers={toggleCheckboxSneakers}/>)}
                     </div>
                 </div>
                 :
@@ -35,7 +47,7 @@ const Favorites: React.FC<Props> = ({finalPrice, cartDataLength, favoriteData}) 
                     <div className={style.noFavoritesText}>
                         Добавьте товар в избранное, чтобы увидеть его здесь
                     </div>
-                    <Button textContent="Перейти на главную"/>
+                    <WithGoToButton textContent={"Перейти на главную"}/>
                 </div>
             }
         </div>
